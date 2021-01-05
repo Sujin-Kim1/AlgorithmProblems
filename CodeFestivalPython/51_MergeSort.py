@@ -38,5 +38,5 @@ def merge_sort(li):
 
 
 if __name__ == '__main__':
-    l = map(int, input().split())
+    l = list(map(int, input().split()))
     print(merge_sort(l))

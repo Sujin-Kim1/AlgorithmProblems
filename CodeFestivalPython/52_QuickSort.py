@@ -15,6 +15,6 @@ def quick_sort(data):
     return quick_sort(left) + [pivot] + quick_sort(right)
 
 if __name__ == '__main__':
-    input_data = map(int, input().split())
+    input_data = list(map(int, input().split()))
     print(quick_sort(input_data))
 

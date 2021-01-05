@@ -25,5 +25,5 @@ def consecutive_num(li):
     return print('YES')
 
 if __name__ == '__main__':
-    n = map(int, input().split())
+    n = list(map(int, input().split()))
     consecutive_num(n)
