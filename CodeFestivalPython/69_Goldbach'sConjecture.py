@@ -12,10 +12,75 @@
 * 해당 문제의 출력 형식은 자유롭습니다. 가능하시다면 골드바흐 파티션 모두를 출력하거나, 그 차가 작은 것을 출력하거나 그 차가 큰 것 모두 출력해보세요.
 """
 
-import math
+import time
+
 
 def get_prime_numbers(n):
-    return
+    prime_numbers = [i for i in range(2, n)]
+    for i in prime_numbers:
+        if is_prime(i):
+            for j in prime_numbers:
+                if j != i and j % i == 0:
+                    prime_numbers.remove(j)
+
+    return prime_numbers
+
+
+def is_prime(n):
+    for i in range(2, int(n ** 0.5)):
+        if n % i == 0:
+            return False
+    return True
+
 
 def goldbach_conjecture(n):
-    return
+    prime_numbers = get_prime_numbers(n)
+    print(prime_numbers)
+
+    goldbach_li = []
+    for i in range(len(prime_numbers)):
+        for j in range(i, len(prime_numbers)):
+            if prime_numbers[i] * 2 > n:
+                break
+            if prime_numbers[i] + prime_numbers[j] == n:
+                goldbach_li.append((prime_numbers[i], prime_numbers[j]))
+
+    return print(goldbach_li)
+
+
+"""
+====== other solution ======
+"""
+
+
+def cal():
+    n = 10000 * 2
+    primes = []
+    a = [False, False] + [True] * (n - 1)
+
+    for i in range(2, n + 1):
+        if a[i]:
+            primes.append(i)
+            for j in range(2 * i, n + 1, i):
+                a[j] = False
+    return primes
+
+
+def answer(n):
+    a = cal()
+
+    # goldbach's partition
+    l = [(i, n - i) for i in range(n // 2 + 1) if i in a and n - i in a]
+    return print(l)
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    t = time.time()
+    goldbach_conjecture(n)
+    print(time.time() - t)
+
+    t = time.time()
+    answer(n)
+    print(time.time() - t)

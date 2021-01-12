@@ -32,7 +32,7 @@ def handshake(n):
     return [n - handshaking_num, participants + 1]
 
 
-def other_solution(n):
+def another_solution(n):
     people = 0
     total = 0
     while True:

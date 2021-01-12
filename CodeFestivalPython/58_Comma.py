@@ -19,6 +19,15 @@ hi
 ========================hi========================
 """
 
+
+def comma(s):
+    if len(s) <= 3:
+        return s
+    return comma(s[:len(s) - 3]) + ',' + s[len(s) - 3:]
+
+
+print(comma('123456789'))
+
 print("{0:,}".format(int(input())))
 print(format(int(input()), ','))
 

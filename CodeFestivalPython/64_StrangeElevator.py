@@ -22,7 +22,7 @@ def strange_elevator(N):
     return print(-1)
 
 
-def other_solution(N):
+def another_solution(N):
     result = 0
     while True:
         if N % 7 == 0:
@@ -35,5 +35,8 @@ def other_solution(N):
             print(-1)
             break
 
+
 if __name__ == '__main__':
-    strange_elevator(int(input()))
+    n = int(input())
+    strange_elevator(n)
+    another_solution(n)
