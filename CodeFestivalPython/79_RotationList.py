@@ -26,3 +26,6 @@ index : 6
 value : 39, 34
 """
 
+
+def recursion_list(l, n):
+    
