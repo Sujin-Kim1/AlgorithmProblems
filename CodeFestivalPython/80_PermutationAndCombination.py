@@ -26,3 +26,6 @@
 4
 """
 
+
+def permutation(hangul, n):
+

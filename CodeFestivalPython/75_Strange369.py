@@ -50,6 +50,5 @@ def strange369(s):
     return count
 
 
-
 if __name__ == '__main__':
     print(strange369(input()))

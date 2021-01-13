@@ -33,11 +33,24 @@ graph = {
 }
 
 
-def longest_path(u, v):
-    visited = []
-    return
+def longest_path(n, visited):
+    if n[-1] == end:
+        return len(visited)
+    if n[-1] in visited:
+        return len(visited)
+    length = 0
+    visited.append(n[-1])
+    for next_node in graph[n[-1]]:
+        n.append(next_node)
+        length = max(length, longest_path(n, visited))
+        n.pop(-1)
+    return length
 
 
 if __name__ == '__main__':
-    u, v = map(int, input().split())
-    longest_path(u, v)
+    start, end = map(int, input().split())
+    queue = [start]
+    visited = []
+    cnt = 0
+
+    print(longest_path(queue, visited))

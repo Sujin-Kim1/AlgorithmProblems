@@ -54,3 +54,12 @@ TKHKIKSIS
 """
 
 
+def longest_common_substring(s1, s2):
+    
+    return
+
+
+if __name__ == '__main__':
+    S1 = input()
+    S2 = input()
+    print(longest_common_substring(S1, S2))

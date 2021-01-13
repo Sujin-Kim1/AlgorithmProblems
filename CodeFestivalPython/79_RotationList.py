@@ -27,5 +27,19 @@ value : 39, 34
 """
 
 
-def recursion_list(l, n):
-    
+def rotation_list(l, n):
+    rotated = l[-n:] + l[:-n]
+    min_value = 999
+    idx = 0
+    for i in range(len(l)):
+        if min_value > abs(l[i] - rotated[i]):
+            min_value = abs(l[i] - rotated[i])
+            idx = i
+    print(f'index: {idx}')
+    print(f'value: {l[idx]}, {rotated[idx]}')
+
+
+if __name__ == '__main__':
+    L = [10, 20, 25, 27, 34, 35, 39]  # 기존 입력 값
+    N = int(input('순회 횟수는: '))
+    rotation_list(L, N)

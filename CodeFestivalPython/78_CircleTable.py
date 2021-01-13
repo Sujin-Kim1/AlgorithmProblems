@@ -20,3 +20,46 @@
 출력
 [3, 5]
 """
+
+
+def circle_table(N, K):
+    is_eaten = [False for i in range(N)]
+    result = []
+    idx = 0
+    is_eaten[idx] = True
+
+    while is_eaten.count(False) != 2:
+        i = 1
+        while i <= K:
+            if idx + 1 >= N:
+                idx -= N
+                continue
+            if not is_eaten[idx + 1]:
+                i += 1
+            idx += 1
+        is_eaten[idx] = True
+
+    for i in range(len(is_eaten)):
+        if not is_eaten[i]:
+            result.append(i + 1)
+    return result
+
+
+def another_solution(N, K):
+    i = 0
+    # q에 n 만큼의 숫자를 넣어준다.
+    q = [i for i in range(1, n + 1)]
+
+    while len(q) > 2:
+        # 순환하다 i가 q의 길이보다 같거나 클 경우에 len(q)만큼 빼준다.
+        if i >= len(q):
+            i -= len(q)
+        q.pop(i)
+        i += k - 1
+    return q
+
+
+if __name__ == '__main__':
+    n, k = map(int, input().split())
+    print(circle_table(n, k))
+    print(another_solution(n, k))
