@@ -7,9 +7,8 @@ void printDecimal(int a, int b) {
     while (a > 0) {
         // 첫 번째와 두 번째 사이에 소수점을 찍는다.
         if (iter++ == 1) cout << '.';
-        cout << a / b << endl;
+        cout << a / b;
         a = (a % b) * 10;
-        cout << "a: " << a << endl;
     }
 }
 
