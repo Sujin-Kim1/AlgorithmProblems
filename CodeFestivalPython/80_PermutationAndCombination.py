@@ -26,6 +26,40 @@
 4
 """
 
+answer = []
 
-def permutation(hangul, n):
 
+# n: 전체 원소들의 수
+# to_pick: 더 골라야 할 원소들의 개수
+# picked: 지금까지 고른 원소들의 번호
+# hangul: 입력 받은 한글 자음의 리스트
+# 일 때, 앞으로 to_pick 개의 원소를 고르는 모든 방법을 answer 에 저장한다.
+def pick(n, to_pick, picked, hangul):
+    # 기저 사례: 더 고를 원소 X
+    if to_pick == 0:
+        return answer.append("".join(picked))
+    # 고를 수 있는 가장 작은 인덱스 찾기
+    smallest = 0 if len(picked) == 0 else hangul.index(picked[-1]) + 1
+    # 원소 하나를 고른다.
+    for next_element in range(smallest, n):
+        picked.append(hangul[next_element])
+        pick(n, to_pick - 1, picked, hangul)
+        picked.pop()
+
+
+# 라이브러리를 사용하는 방법
+from itertools import combinations
+
+
+def another_solution(hangul, n):
+    result = list(map(''.join, combinations(hangul, n)))
+    print(result, len(result))
+
+
+if __name__ == '__main__':
+    hangul = list(input().split())
+    n = int(input())
+    picked = []
+    pick(len(hangul), n, picked, hangul)
+    print(answer, len(answer))
+    another_solution(hangul, n)

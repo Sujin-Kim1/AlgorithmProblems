@@ -57,9 +57,8 @@ int main() {
         // 패턴과 파일명이 일치하면 answer 에 추가하고 cache 를 -1로 초기화한다.
         for (int j = 0; j < N; j++) {
             cin >> S;
-            if (matchMemoized(0, 0) == 1) {
+            if (matchMemoized(0, 0))
                 answer.push_back(S);
-            }
             memset(cache, -1, sizeof(cache));
         }
         // 각 테스트 케이스가 끝나면 아스키 코드 순서대로 출력하고 answer 를 초기화한다.
