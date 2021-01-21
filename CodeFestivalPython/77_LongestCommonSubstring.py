@@ -77,7 +77,7 @@ def longest_common_substring(s1, s2):
 """ 
 list 의 내장 함수를 이용한 방법
 """
-# 문자열이 나열될 수 있는 모든 경우의 수를 구한다.
+# 부분 문자열의 모든 경우의 수를 구한다.
 def determines_listed_string_number(s):
     result = []
     for i in range(1, len(s) + 1):
