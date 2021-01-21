@@ -24,6 +24,7 @@ string W, S;
 bool matchMemoized(int w, int s) {
     // memoization
     int &ret = cache[w][s];
+    // 기저 사례: 이미 계산한 값이면 그대로 반환한다.
     if (ret != -1) return ret;
     // W[w]와 S[s]를 맞춰나간다.
     if (w < W.size() && s < S.size() &&

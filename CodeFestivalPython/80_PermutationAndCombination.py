@@ -37,7 +37,7 @@ answer = []
 def pick(n, to_pick, picked, hangul):
     # 기저 사례: 더 고를 원소 X
     if to_pick == 0:
-        return answer.append("".join(picked))
+        return answer.append(''.join(picked))
     # 고를 수 있는 가장 작은 인덱스 찾기
     smallest = 0 if len(picked) == 0 else hangul.index(picked[-1]) + 1
     # 원소 하나를 고른다.

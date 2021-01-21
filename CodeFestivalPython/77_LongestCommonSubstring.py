@@ -55,11 +55,51 @@ TKHKIKSIS
 
 
 def longest_common_substring(s1, s2):
-    
-    return
+    # 공통 부분 문자열의 길이
+    common_string_count = 0
+    # 길이가 짧은 문자열이 s2가 되도록 설정
+    if len(s1) < len(s2):
+        s1, s2 = s2, s1
+    # 공통 길이는 s2를 기준으로 계산한다.
+    # s2의 부분 문자열의 길이를 하나씩 늘려가면서 s1에 s2의 부분 문자열이 존재하는지 판단한다.
+    for length in range(1, len(s2) + 1):
+        for pos in range(len(s2) - length + 1):
+            # 부분 문자열이 존재하면 common_string_count 를 증가하고 length 를 늘려 다시 판단한다.
+            if s2[pos:pos + length] in s1:
+                common_string_count += 1
+                break
+            # length 가 가장 긴 부분 문자열의 길이가 아닌 경우 common_string_count 를 반환한다.
+            if pos == len(s2) - length and s2[pos:pos + length] not in s1:
+                return common_string_count
+    return common_string_count
+
+
+""" 
+list 의 내장 함수를 이용한 방법
+"""
+# 문자열이 나열될 수 있는 모든 경우의 수를 구한다.
+def determines_listed_string_number(s):
+    result = []
+    for i in range(1, len(s) + 1):
+        for j in range(i):
+            result.append(s[j:j + len(s) - i + 1])
+    return result
+
+
+def longest_common_substring_using_library(s1, s2):
+    s1_list = set(determines_listed_string_number(s1))
+    s2_list = set(determines_listed_string_number(s2))
+    # 경우의 수 교집합
+    answers = s1_list.intersection(s2_list)
+    # 가장 긴 교집합
+    answer = max(answers, key=len)
+    return len(answer)
 
 
 if __name__ == '__main__':
-    S1 = input()
-    S2 = input()
-    print(longest_common_substring(S1, S2))
+    test_num = int(input())
+    for test in range(test_num):
+        S1 = input()
+        S2 = input()
+        print(longest_common_substring(S1, S2))
+        print(longest_common_substring_using_library(S1, S2))
