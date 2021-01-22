@@ -29,9 +29,13 @@ dy = [-1, 1, 0, 0]
 dx = [0, 0, -1, 1]
 
 
+# 깃발이 적혀 있는 맵을 보고 깃발과 그 주변에 있는 지뢰를 표시한다.
+# '0': 지뢰가 없음
+# 'f': 깃발 존재
+# '*': 지뢰 존재
 def minesweeper():
-    for y in range(5):
-        for x in range(5):
+    for y in range(len(flag)):
+        for x in range(len(flag)):
             # flag 를 발견한 경우 f 표시를 하고 주변에 지뢰 표시를 한다.
             if flag[y][x] == '1':
                 mines[y][x] = 'f'

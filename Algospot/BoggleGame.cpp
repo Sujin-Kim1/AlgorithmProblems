@@ -51,8 +51,8 @@ int main() {
         cin >> word;
         // hasWord 가 true 인지 false 인지 저장하는 bool 값
         bool result = false;
-        for (int x = 0; x < BOARD_SIZE; x++) {
-            for (int y = 0; y < BOARD_SIZE; y++) {
+        for (int y = 0; y < BOARD_SIZE; y++) {
+            for (int x = 0; x < BOARD_SIZE; x++) {
                 if (hasWord(y, x, word)) {
                     result = true;
                     break;
