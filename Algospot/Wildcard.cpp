@@ -1,5 +1,5 @@
 /**
- * Sources: https://www.algospot.com/judge/problem/read/WILDCARD
+ * Question: https://www.algospot.com/judge/problem/read/WILDCARD
  * */
 
 #include <iostream>
