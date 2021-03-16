@@ -10,9 +10,10 @@
 using namespace std;
 
 // 정점의 개수
-int V;
+int V = 7;
 // 그래프의 인접 리스트 (연결된 정점 번호, 간선 가중치) 쌍을 담는다.
 vector<pair<int, int> > adj[MAX_V];
+vector<int> parent(V, -1);
 
 // 각 정점까지의 최단 거리를 구한다.
 // s = 시작 정점
@@ -47,6 +48,7 @@ vector<int> dijkstra(int s) {
             // 더 짧은 경로를 발견하면, dist[]를 갱신하고 우선순위 큐에 넣는다.
             if (dist[there] > nextDist) {
                 dist[there] = nextDist;
+                parent[there] = here;
                 pq.push(make_pair(-nextDist, there));
             }
         }
@@ -56,8 +58,28 @@ vector<int> dijkstra(int s) {
 }
 
 
+// s -> u 로 가는 최단 경로를 출력한다.
+void printShortestPath(int s, int u) {
+    int here = u;
+    vector<int> path;  // u -> s
+
+    path.emplace_back(u);
+    while (here != s) {
+        int there = parent[here];
+        path.emplace_back(there);
+        here = there;
+    }
+
+    // s -> u 의 경로를 출력하기 위해 path 를 역순으로 출력
+    vector<int>::reverse_iterator rit;
+    for (rit = path.rbegin(); rit != path.rend(); rit++)
+        cout << *rit << " -> ";
+    cout << "end!";
+}
+
+
 int main() {
-    V = 7;
+    int s = 0;  // start node
 
     // adj 설정
     adj[0].emplace_back(make_pair(1, 5));
@@ -85,8 +107,12 @@ int main() {
     adj[6].emplace_back(make_pair(1, 3));
     adj[6].emplace_back(make_pair(5, 2));
 
-    vector<int> dist = dijkstra(0);
-    for (auto& d: dist) {
-        cout << d << " ";
-    }
+    vector<int> dist = dijkstra(s);
+
+    for (int i = 0; i < dist.size(); i++)
+        cout << s << " -> " << i << ": " << dist[i] << endl;
+    cout << endl;
+
+    // 0 -> 5 까지의 최단 경로를 출력한다.
+    printShortestPath(0, 5);
 }
