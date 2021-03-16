@@ -34,7 +34,7 @@ vector<int> dijkstra(int s) {
         int here = pq.top().second;
         pq.pop();
 
-        // 원소를 꺼냈는데 dist[u]가 cost 보다 작다면 이 원소는 중복으로 들어간 원소이므로 무시하고 다음 원소를 꺼낸다.
+        // 원소를 꺼냈는데 dist[here]가 cost 보다 작다면 이 원소는 중복으로 들어간 원소이므로 무시하고 다음 원소를 꺼낸다.
         if (dist[here] < cost) continue;
 
         // 인접한 정점들을 모두 검사한다.
@@ -66,14 +66,14 @@ void printShortestPath(int s, int u) {
     path.emplace_back(u);
     while (here != s) {
         int there = parent[here];
-        path.emplace_back(there);
+        path.emplace(path.begin(), there);
         here = there;
     }
 
     // s -> u 의 경로를 출력하기 위해 path 를 역순으로 출력
-    vector<int>::reverse_iterator rit;
-    for (rit = path.rbegin(); rit != path.rend(); rit++)
-        cout << *rit << " -> ";
+    vector<int>::iterator it;
+    for (it = path.begin(); it != path.end(); it++)
+        cout << *it << " -> ";
     cout << "end!";
 }
 
