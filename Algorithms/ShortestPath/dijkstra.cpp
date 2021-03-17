@@ -61,7 +61,7 @@ vector<int> dijkstra(int s) {
 // s -> u 로 가는 최단 경로를 출력한다.
 void printShortestPath(int s, int u) {
     int here = u;
-    vector<int> path;  // u -> s
+    vector<int> path;
 
     path.emplace_back(u);
     while (here != s) {
@@ -70,7 +70,6 @@ void printShortestPath(int s, int u) {
         here = there;
     }
 
-    // s -> u 의 경로를 출력하기 위해 path 를 역순으로 출력
     vector<int>::iterator it;
     for (it = path.begin(); it != path.end(); it++)
         cout << *it << " -> ";
